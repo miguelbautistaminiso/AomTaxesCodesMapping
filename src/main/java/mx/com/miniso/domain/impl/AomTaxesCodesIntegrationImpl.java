@@ -30,27 +30,32 @@ public class AomTaxesCodesIntegrationImpl implements AomTaxesCodesIntegration {
     @Override
     public void exec() {
 
-/*
+
         log.info("**************************");
         log.info("Borrando registros del proceso anterior");
         log.info("**************************");
-        upcsRepository.SP_DELETE_UPCS();
-
+//        upcsRepository.SP_DELETE_UPCS();
+/*
         log.info("**************************");
         log.info("Cargando datos de prueba");
         log.info("**************************");
         upcsRepository.SP_TEST();
+
+
 
         log.info("**************************");
         log.info("Cargando Taxes");
         log.info("**************************");
         taxesRepository.SP_INSERT_TAXES();
 
+ */
+
         log.info("**************************");
         log.info("Actualizando AOM taxes por pais");
         log.info("**************************");
         updateTaxesCodes.updateAomId();
 
+        /*
         log.info("**************************");
         log.info("Actualizando AOM taxes por pais");
         log.info("**************************");
@@ -61,8 +66,9 @@ public class AomTaxesCodesIntegrationImpl implements AomTaxesCodesIntegration {
         log.info("Actualizando Id de grupo de impuestos");
         log.info("**************************");
         updateTaxesCodes.updateTaxesGroupsId();
-*/
-        conHana();
+
+ */
+//        conHana();
 
 
     }

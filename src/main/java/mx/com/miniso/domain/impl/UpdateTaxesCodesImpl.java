@@ -65,6 +65,14 @@ public class UpdateTaxesCodesImpl implements UpdateTaxesCodes {
 
         ArrayList<CountriesTaxesCodesEntity> chlCountryList = countriesTaxesCodesRepository.findAllByCountry("CHL");
 
+        chlCountryList.forEach(chl -> {
+
+            log.info("Actualizando: " + chl + " " + chl.getSapTaxCode() + " " + chl.getAomTaxId());
+            chlTaxCodeRepository.updateAomTaxId(chl.getAomTaxId(), chl.getSapTaxCode());
+        });
+
+
+        /*
         ArrayList<ChlTaxCodeEntity> chlList = chlTaxCodeRepository.findAll();
 
         chlList.forEach(chl -> {
@@ -92,12 +100,22 @@ public class UpdateTaxesCodesImpl implements UpdateTaxesCodes {
 
 
         });
+
+         */
     }
 
     private void updatesCol() {
 
         ArrayList<CountriesTaxesCodesEntity> colCountryList = countriesTaxesCodesRepository.findAllByCountry("COL");
 
+
+        colCountryList.forEach(col -> {
+
+            log.info("Actualizando: " + col.getSapTaxCode() + " " + col.getAomTaxId());
+            colTaxCodeRepository.updateAomTaxId(col.getAomTaxId(), col.getSapTaxCode());
+        });
+
+/*
         ArrayList<ColTaxCodeEntity> colList = colTaxCodeRepository.findAll();
 
         colList.forEach(col -> {
@@ -112,28 +130,39 @@ public class UpdateTaxesCodesImpl implements UpdateTaxesCodes {
 
             switch (col.getCode()) {
                 case "IVAG01":
-                    taxesRepository.updateColIvag0119(col.getAomTaxId(), col.getUpc() );
+                    taxesRepository.updateColIvag0119(col.getAomTaxId(), col.getUpc());
                     break;
                 case "IVA_EXE":
-                    taxesRepository.updateColIvaexe0(col.getAomTaxId(), col.getUpc() );
+                    taxesRepository.updateColIvaexe0(col.getAomTaxId(), col.getUpc());
                     break;
                 case "IVA_EXC":
-                    taxesRepository.updateColIvaexc0(col.getAomTaxId(), col.getUpc() );
+                    taxesRepository.updateColIvaexc0(col.getAomTaxId(), col.getUpc());
                     break;
                 case "IMPOCON":
-                    taxesRepository.updateColImpocon9(col.getAomTaxId(), col.getUpc() );
+                    taxesRepository.updateColImpocon9(col.getAomTaxId(), col.getUpc());
                     break;
                 case "IMPOCON0":
-                    taxesRepository.updateColImpocon00(col.getAomTaxId(), col.getUpc() );
+                    taxesRepository.updateColImpocon00(col.getAomTaxId(), col.getUpc());
                     break;
             }
         });
+
+ */
     }
 
     private void updatesMex() {
 
         ArrayList<CountriesTaxesCodesEntity> mexCountryList = countriesTaxesCodesRepository.findAllByCountry("MEX");
 
+
+        mexCountryList.forEach(mex -> {
+
+            log.info("Actualizando: " + mex.getSapTaxCode() + " " + mex.getAomTaxId());
+            mexTaxCodeRepository.updateAomTaxId(mex.getAomTaxId(), mex.getSapTaxCode());
+        });
+
+
+        /*
         ArrayList<MexTaxCodeEntity> mexList = mexTaxCodeRepository.findAll();
 
         mexList.forEach(mex -> {
@@ -148,25 +177,35 @@ public class UpdateTaxesCodesImpl implements UpdateTaxesCodes {
 
             switch (mex.getCode()) {
                 case "V16":
-                    taxesRepository.updateMexV1616(mex.getAomTaxId(), mex.getUpc() );
+                    taxesRepository.updateMexV1616(mex.getAomTaxId(), mex.getUpc());
                     break;
                 case "V0":
-                    taxesRepository.updateMexV00(mex.getAomTaxId(), mex.getUpc() );
+                    taxesRepository.updateMexV00(mex.getAomTaxId(), mex.getUpc());
                     break;
                 case "V0I8":
-                    taxesRepository.updateMexV0188(mex.getAomTaxId(), mex.getUpc() );
+                    taxesRepository.updateMexV0188(mex.getAomTaxId(), mex.getUpc());
                     break;
                 case "V16I8":
-                    taxesRepository.updateMexV16I8168(mex.getAomTaxId(), mex.getUpc() );
+                    taxesRepository.updateMexV16I8168(mex.getAomTaxId(), mex.getUpc());
                     break;
             }
         });
+
+         */
     }
 
     private void updatesMfr() {
 
         ArrayList<CountriesTaxesCodesEntity> mfrCountryList = countriesTaxesCodesRepository.findAllByCountry("MFR");
 
+        mfrCountryList.forEach(mfr -> {
+
+            log.info("Actualizando: " + mfr.getSapTaxCode() + " " + mfr.getAomTaxId());
+            mfrTaxCodeRepository.updateAomTaxId(mfr.getAomTaxId(), mfr.getSapTaxCode());
+        });
+
+
+        /*
         ArrayList<MfrTaxCodeEntity> mfrList = mfrTaxCodeRepository.findAll();
 
         mfrList.forEach(mfr -> {
@@ -181,25 +220,35 @@ public class UpdateTaxesCodesImpl implements UpdateTaxesCodes {
 
             switch (mfr.getCode()) {
                 case "V16":
-                    taxesRepository.updateMfrV168(mfr.getAomTaxId(), mfr.getUpc() );
+                    taxesRepository.updateMfrV168(mfr.getAomTaxId(), mfr.getUpc());
                     break;
                 case "V0":
-                    taxesRepository.updateMfrV00(mfr.getAomTaxId(), mfr.getUpc() );
+                    taxesRepository.updateMfrV00(mfr.getAomTaxId(), mfr.getUpc());
                     break;
                 case "V0I8":
-                    taxesRepository.updateMfrV0I88(mfr.getAomTaxId(), mfr.getUpc() );
+                    taxesRepository.updateMfrV0I88(mfr.getAomTaxId(), mfr.getUpc());
                     break;
                 case "V16I8":
-                    taxesRepository.updateMfrV16I888(mfr.getAomTaxId(), mfr.getUpc() );
+                    taxesRepository.updateMfrV16I888(mfr.getAomTaxId(), mfr.getUpc());
                     break;
             }
         });
+
+         */
     }
 
     private void updatesPer() {
 
         ArrayList<CountriesTaxesCodesEntity> perCountryList = countriesTaxesCodesRepository.findAllByCountry("PER");
 
+        perCountryList.forEach(per -> {
+
+            log.info("Actualizando: " + per.getSapTaxCode() + " " + per.getAomTaxId());
+            perTaxCodeRepository.updateAomTaxId(per.getAomTaxId(), per.getSapTaxCode());
+        });
+
+
+        /*
         ArrayList<PerTaxCodeEntity> perList = perTaxCodeRepository.findAll();
 
         perList.forEach(per -> {
@@ -222,14 +271,15 @@ public class UpdateTaxesCodesImpl implements UpdateTaxesCodes {
                     taxesRepository.updatePerIgvIcbper18(per.getAomTaxId(), per.getUpc());
                     break;
             }
-        });
+        });*/
+
     }
 
-    private void updateTaxGroupId(){
+    private void updateTaxGroupId() {
 
-        taxesGroupsRepository.findAll().forEach( tg -> {
+        taxesGroupsRepository.findAll().forEach(tg -> {
 
-            upcsRepository.updateTaxGroupId(tg.getTaxGroupId(),tg.getTaxGroup());
+            upcsRepository.updateTaxGroupId(tg.getTaxGroupId(), tg.getTaxGroup());
 
         });
 
