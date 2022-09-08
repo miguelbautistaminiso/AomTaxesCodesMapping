@@ -15,6 +15,9 @@ public interface TaxesRepository extends JpaRepository <TaxesEntity, Integer> {
     @Procedure
     void  SP_INSERT_TAXES();
 
+    @Procedure
+    void  SP_MERGE_AOM_TAX_ID();
+
     TaxesEntity save(TaxesEntity taxesEntity);
 
     //CHIlE

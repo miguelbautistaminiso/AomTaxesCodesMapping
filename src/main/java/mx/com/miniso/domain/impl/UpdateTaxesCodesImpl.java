@@ -1,5 +1,6 @@
 package mx.com.miniso.domain.impl;
 
+import mx.com.miniso.domain.MailService;
 import mx.com.miniso.domain.UpdateTaxesCodes;
 import mx.com.miniso.jpa.entities.*;
 import mx.com.miniso.jpa.repositories.*;
@@ -21,6 +22,9 @@ public class UpdateTaxesCodesImpl implements UpdateTaxesCodes {
 
     @Autowired
     private TaxesRepository taxesRepository;
+
+    @Autowired
+    private MailService mailService;
 
     @Autowired
     private ChlTaxCodeRepository chlTaxCodeRepository;
@@ -58,6 +62,25 @@ public class UpdateTaxesCodesImpl implements UpdateTaxesCodes {
     public void updateTaxesGroupsId() {
 
         updateTaxGroupId();
+
+    }
+
+    @Override
+    public void validateAomTaxesCodes() {
+
+        ArrayList<ChlTaxCodeEntity> chlArrayList = chlTaxCodeRepository.findAllByAomTaxIdIsNull();
+        ArrayList<ColTaxCodeEntity> colArrayList = colTaxCodeRepository.findAllByAomTaxIdIsNull();
+        ArrayList<MexTaxCodeEntity> mexArrayList = mexTaxCodeRepository.findAllByAomTaxIdIsNull();
+        ArrayList<MfrTaxCodeEntity> mfrArrayList = mfrTaxCodeRepository.findAllByAomTaxIdIsNull();
+        ArrayList<PerTaxCodeEntity> perArayList = perTaxCodeRepository.findAllByAomTaxIdIsNull();
+
+        if(chlArrayList.size() > 0 || colArrayList.size() > 0 || mexArrayList.size() > 0 || mfrArrayList.size()>0 || perArayList.size()>0){
+            try {
+                mailService.sendMail();
+            }catch (Exception e){
+                log.info(e.getMessage());
+            }
+        }
 
     }
 
@@ -284,6 +307,8 @@ public class UpdateTaxesCodesImpl implements UpdateTaxesCodes {
         });
 
     }
+
+
 
 
 }

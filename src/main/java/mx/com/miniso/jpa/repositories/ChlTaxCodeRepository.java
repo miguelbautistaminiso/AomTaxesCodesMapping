@@ -13,6 +13,8 @@ public interface ChlTaxCodeRepository extends JpaRepository<ChlTaxCodeEntity, In
 
     ArrayList<ChlTaxCodeEntity> findAll();
 
+    ArrayList<ChlTaxCodeEntity> findAllByAomTaxIdIsNull();
+
     ChlTaxCodeEntity save(ChlTaxCodeEntity chlTaxCodeEntity);
 
     @Transactional

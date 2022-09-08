@@ -1,5 +1,6 @@
 package mx.com.miniso.jpa.repositories;
 
+import mx.com.miniso.jpa.entities.ChlTaxCodeEntity;
 import mx.com.miniso.jpa.entities.ColTaxCodeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 public interface ColTaxCodeRepository  extends JpaRepository<ColTaxCodeEntity, Integer > {
 
     ArrayList<ColTaxCodeEntity> findAll();
+
+    ArrayList<ColTaxCodeEntity> findAllByAomTaxIdIsNull();
 
     ColTaxCodeEntity save(ColTaxCodeEntity colTaxCodeEntity);
 

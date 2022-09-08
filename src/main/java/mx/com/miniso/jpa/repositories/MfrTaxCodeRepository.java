@@ -1,5 +1,6 @@
 package mx.com.miniso.jpa.repositories;
 
+import mx.com.miniso.jpa.entities.MexTaxCodeEntity;
 import mx.com.miniso.jpa.entities.MfrTaxCodeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -14,6 +15,9 @@ public interface MfrTaxCodeRepository  extends JpaRepository<MfrTaxCodeEntity, I
     ArrayList<MfrTaxCodeEntity> findAll();
 
     MfrTaxCodeEntity save(MfrTaxCodeEntity mfrTaxCodeEntity);
+
+
+    ArrayList<MfrTaxCodeEntity> findAllByAomTaxIdIsNull();
 
 
     @Transactional

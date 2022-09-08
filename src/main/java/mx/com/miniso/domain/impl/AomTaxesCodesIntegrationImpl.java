@@ -1,6 +1,7 @@
 package mx.com.miniso.domain.impl;
 
 import mx.com.miniso.domain.AomTaxesCodesIntegration;
+import mx.com.miniso.domain.GetCountriesUPCS;
 import mx.com.miniso.domain.UpdateTaxesCodes;
 import mx.com.miniso.jpa.repositories.SkusRepository;
 import mx.com.miniso.jpa.repositories.TaxesRepository;
@@ -22,6 +23,9 @@ public class AomTaxesCodesIntegrationImpl implements AomTaxesCodesIntegration {
     private UpcsRepository upcsRepository;
 
     @Autowired
+    private GetCountriesUPCS getCountriesUPCS;
+
+    @Autowired
     private TaxesRepository taxesRepository;
 
     @Autowired
@@ -34,41 +38,43 @@ public class AomTaxesCodesIntegrationImpl implements AomTaxesCodesIntegration {
         log.info("**************************");
         log.info("Borrando registros del proceso anterior");
         log.info("**************************");
-//        upcsRepository.SP_DELETE_UPCS();
-/*
-        log.info("**************************");
-        log.info("Cargando datos de prueba");
-        log.info("**************************");
-        upcsRepository.SP_TEST();
+        upcsRepository.SP_DELETE_UPCS();
 
-
+        log.info("**************************");
+        log.info("Obteniendo UPCS de Mexico");
+        log.info("**************************");
+        getCountriesUPCS.getUpcs();
 
         log.info("**************************");
         log.info("Cargando Taxes");
         log.info("**************************");
         taxesRepository.SP_INSERT_TAXES();
 
- */
-
         log.info("**************************");
         log.info("Actualizando AOM taxes por pais");
         log.info("**************************");
         updateTaxesCodes.updateAomId();
 
-        /*
+        log.info("**************************");
+        log.info("Actualizando AOM taxes por pais");
+        log.info("**************************");
+        taxesRepository.SP_MERGE_AOM_TAX_ID();
+
         log.info("**************************");
         log.info("Actualizando AOM taxes por pais");
         log.info("**************************");
         upcsRepository.SP_INSERT_UPCS();
 
-
         log.info("**************************");
         log.info("Actualizando Id de grupo de impuestos");
         log.info("**************************");
         updateTaxesCodes.updateTaxesGroupsId();
+        
+        log.info("**************************");
+        log.info("Validando");
+        log.info("**************************");
+        updateTaxesCodes.validateAomTaxesCodes();
 
- */
-//        conHana();
 
 
     }
